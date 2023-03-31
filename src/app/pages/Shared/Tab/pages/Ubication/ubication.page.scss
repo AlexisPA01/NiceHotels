@@ -1,0 +1,48 @@
+.toolbar{
+    --background: white;
+    padding: 16px 0 ;
+    text-align: center;
+    padding-bottom: 0;
+    ion-icon{
+        color: var(--app-color-1);
+    }
+
+    &>.toolbar-img{
+        width: 150px;     
+    }
+}
+
+.container{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    align-items: center;
+    background: var(--app-color-2);
+    &>img{
+        width: 150px;
+        padding: 6px;
+    }
+    &>.text{
+        color: var(--app-color-4);
+        font-size: 16px;
+        width: 90%;
+        padding: 6px;
+    }
+    &>.map{
+        height: 250px;
+        width: 85%;
+    }
+    &>.alter-logo{
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: var(--app-color-4);
+        padding: 12px 0;
+    }
+}
+
+.map{
+    height: 250px;
+    width: 85%;
+    background: gray;
+}

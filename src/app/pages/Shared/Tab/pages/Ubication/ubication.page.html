@@ -1,0 +1,48 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar class="toolbar">
+    <ion-button [routerLink]="['/']" fill="clear" slot="start">
+      <img width="28px" class="toolbar-img" src="/assets/icons/atras.png" alt="hotel">
+    </ion-button>
+    <img class="toolbar-img" src="/assets/images/cartagena/logo-cartagena-plaza2.png" alt="hotel">
+    <ion-button [routerLink]="['/login']" fill="clear" slot="end">
+      <img width="28px" class="toolbar-img" src="/assets/icons/user.png" alt="hotel">
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- <div class="container">
+    <img src="/assets/images/hotels/logo-cartagena-plaza1.png" alt="hotel">
+    <div class="text">
+      Cra. 1 #N° 6 - 154, Cartagena de Indias, Provincia de Cartagena, Bolívar
+    </div>
+    <div id="map-cartagena" class="map"></div>  
+  </div>
+  <div class="container">
+    <img src="/assets/images/hotels/logo-tamaca.png" alt="hotel">
+    <div class="text">
+      Av. George Washington 500, Santo Domingo 10104, República Dominicana
+    </div>
+    <div id="map-catalonia" class="map"></div>  
+  </div>
+  <div class="container">
+    <img src="/assets/images/hotels/logo-catalonia-santodomingo.png" alt="hotel">
+    <div class="text">
+      Cra. 2 #11A - 98, El Rodadero, Santa Marta, Gaira, Santa Marta, Magdalena
+    </div>
+    <div id="map-tamaca" class="map"></div>  
+  </div> -->
+  <div class="container" *ngFor="let item of Hotels; index as i">
+    <img *ngIf="item.Medias[1] !== undefined"
+      src={{item.Medias[1].URL}}
+      alt="Logo">
+    <div class="alter-logo" *ngIf="item.Medias[1] === undefined">
+      {{item.Name}}
+    </div>
+    <div class="text">
+      {{item.Address}}
+    </div>
+    <div class="map" [attr.id]="'map'+i"></div>
+  </div>  
+ <app-tab-component></app-tab-component>
+</ion-content>

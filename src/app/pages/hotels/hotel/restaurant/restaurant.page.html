@@ -1,0 +1,78 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar class="toolbar">
+    <ion-button  (click)="goBack()" fill="clear" slot="start">
+      <img width="28px" class="toolbar-img" src="/assets/icons/atras.png" alt="hotel">
+    </ion-button>
+    <img *ngIf="Logo!==''" class="toolbar-img" src={{Logo}} alt="hotel">
+    <ion-button [routerLink]="['/login']" fill="clear" slot="end">
+      <img width="28px" class="toolbar-img" src="/assets/icons/user.png" alt="hotel">
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <swiper
+      [slidesPerView]="1"
+      [spaceBetween]="20"
+      [pagination]="{ clickable: true }">
+    <ng-template swiperSlide *ngFor="let img of Slider">
+      <img alt="experiencia" src={{img}} width="100%"/>
+    </ng-template>
+  </swiper>
+
+  <div class="cont">
+    <div class="sev-title">
+      {{Installation.Name}}
+    </div>
+    <div class="sev-description">
+      {{Installation.Description}}
+    </div>
+  </div>
+
+  <div class="btns">
+    <ion-button class="btn" (click)="goMenu()">
+      Menú
+    </ion-button>
+    <ion-button class="btn">
+      Reservar
+    </ion-button>
+  </div>
+
+  <div class="sev-title" *ngIf="Lunch.length > 0 || Breakfast.length > 0">
+    Productos
+  </div>
+
+  <ion-accordion-group *ngIf="Lunch.length > 0 || Breakfast.length > 0">
+    <ion-accordion value="first" *ngIf="Breakfast.length > 0">
+      <ion-item slot="header" color="app-color-1" >
+        <ion-label >Desayunos</ion-label>
+      </ion-item>
+      <div *ngIf="Breakfast.length > 0" class="ion-padding" slot="content" class="container">
+        <div class="container-sev" *ngFor="let i of Breakfast">
+          <div class="sev-text">
+            {{i.Name}}: {{i.Description}} - Precio: {{i.Cost}}$
+          </div>
+        </div>
+      </div>
+      <div *ngIf="Breakfast.length === 0" class="ion-padding" slot="content" class="container">
+        <div class="sev-message">No hay desayunos registrados</div>
+      </div>
+    </ion-accordion>
+    <ion-accordion value="second" *ngIf="Lunch.length > 0">
+      <ion-item slot="header" color="app-color-1">
+        <ion-label>Almuerzos</ion-label>
+      </ion-item>
+      <div *ngIf="Lunch.length > 0" class="ion-padding container" slot="content">
+        <div class="container-sev" *ngFor="let i of Lunch">
+          <div class="sev-text">
+            {{i.Name}}: {{i.Description}} - Precio: {{i.Cost}}$
+          </div>
+        </div>
+      </div>
+      <div *ngIf="Lunch.length === 0" class="ion-padding" slot="content" class="container">
+        <div class="sev-message">No hay almuerzos registrados</div>
+      </div>
+    </ion-accordion>
+  </ion-accordion-group>
+
+</ion-content>

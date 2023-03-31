@@ -1,0 +1,147 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar class="toolbar">
+    <ion-button [routerLink]="['/hotels']" fill="clear" slot="start">
+      <img width="28px" class="toolbar-img" src="/assets/icons/atras.png" alt="hotel">
+    </ion-button>
+    <img *ngIf="CheckLogo" class="toolbar-img" src={{Logo}} alt="hotel">
+    <ion-button [routerLink]="['/login']" fill="clear" slot="end">
+      <img width="28px" class="toolbar-img" src="/assets/icons/user.png" alt="hotel">
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-slides [options]="config2" *ngIf="Slider.length === 0">
+    <ion-slide *ngFor="let slide of SliderDefault">
+      <img src={{slide}} alt="">
+    </ion-slide>
+  </ion-slides>
+
+  <ion-slides [options]="config2" *ngIf="Slider.length !== 0">
+    <ion-slide *ngFor="let slide of Slider">
+      <img src={{slide}} alt="">
+    </ion-slide>
+  </ion-slides>
+  
+  <div class="container">
+    <div class="card">
+      <div class="card-header">
+        <div class="card-header-item" (click)="goInformationHotel()">
+          <div class="card-header-item-img">
+            <img src="/assets/icons/info.png" alt="info"/>
+          </div>
+          <div class="card-header-item-text">Información del hotel</div>
+        </div>
+      </div>
+      <div class="card-header">
+        <div class="card-header-item">
+          <div class="card-header-item-img">
+            <img src="/assets/icons/offer.png" alt="offer"/>
+          </div>
+          <div class="card-header-item-text">Ofertas</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SEGMENT -->
+    <ion-segment value="default" [(ngModel)]="type">
+      <ion-segment-button class="segment-btn" value="rooms">
+        <ion-label>Habitaciones</ion-label>
+      </ion-segment-button>
+      <ion-segment-button class="segment-btn" value="restaurants">
+        <ion-label>Restaurantes</ion-label>
+      </ion-segment-button>
+      <ion-segment-button class="segment-btn" value="sales">
+        <ion-label>Bienestar</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+
+    <!-- ROOMS -->
+    <div [ngSwitch]="type" class="segment-switch-container">
+      <div *ngSwitchCase="'rooms'">
+        <div *ngIf="!CheckRoom">
+          <div class="card" *ngFor="let room of Rooms1">
+            <img src={{room.img}} alt="hotel"/>
+            <div class="card-container">
+              <div class="card-title">
+                {{room.title}}
+              </div>
+              <div class="card-text">
+                {{room.price}} por noche
+              </div>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="CheckRoom">
+          <div class="card" *ngFor="let room of Rooms" (click)="goRoom(room.Cod)">
+            <img src={{room.Medias[0].URL}} alt="hotel"/>
+            <div class="card-container">
+              <div class="card-title">
+                {{room.Name}}
+              </div>
+              <div class="card-text">
+                {{room.CostNight}} por noche
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- INSTALLATION -->
+      <div *ngSwitchCase="'restaurants'">
+        <div *ngIf="!CheckRestaurant">
+          <div class="card" *ngFor="let res of Restaurants">
+            <img src={{res.img}} alt="hotel"/>
+            <div class="card-container">
+              <div class="card-title">
+                {{res.title}}
+              </div>
+              <div class="card-text">
+                {{res.text}}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="CheckRestaurant">
+          <div class="card" *ngFor="let res of Installations" (click)="goRestaurant(res.Id)">
+            <img src={{res.Medias[0].URL}} alt="hotel"/>
+            <div class="card-container">
+              <div class="card-title">
+                {{res.Name}}
+              </div>
+              <div class="card-text">
+                {{res.Description}}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        
+      </div>
+      <div *ngSwitchCase="'sales'">
+        <ion-grid>
+          <ion-row>
+            <ion-col size-xs="6" *ngFor="let ser of Services">
+              <div *ngIf="ser.title !== 'Lugares de interes'">
+                <div class="text">
+                  {{ser.title}}
+                </div>
+                <div class="background"></div>
+                <img src={{ser.img}} alt="hotel"/>
+              </div>
+              <div class="go-site" *ngIf="ser.title === 'Lugares de interes'" (click)="goRecommendedSite()">
+                <div class="text">
+                  {{ser.title}}
+                </div>
+                <div class="background"></div>
+                <img src={{ser.img}} alt="hotel"/>
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+    </div>
+  </div>
+
+  <app-tab-component></app-tab-component>
+
+</ion-content>

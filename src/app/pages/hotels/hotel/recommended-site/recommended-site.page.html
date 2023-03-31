@@ -1,0 +1,44 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar class="toolbar">
+    <ion-button  (click)="goBack()" fill="clear" slot="start">
+      <img width="28px" class="toolbar-img" src="/assets/icons/atras.png" alt="hotel">
+    </ion-button>
+    <img *ngIf="Logo!==''" class="toolbar-img" src={{Logo}} alt="hotel">
+    <ion-button [routerLink]="['/login']" fill="clear" slot="end">
+      <img width="28px" class="toolbar-img" src="/assets/icons/user.png" alt="hotel">
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="btn">
+    <ion-button (click)="goLocation()">
+      Ver lugares de Interés en el mapa
+    </ion-button>
+  </div>
+
+  <div class="section-1">
+    <div class="title">{{Site1.Name}}</div>
+    <div class="text">{{Site1.Description}}</div>
+    <address>{{Site1.Address}}</address>
+  </div>
+
+  <swiper
+    [slidesPerView]="3"
+    [spaceBetween]="20"
+    [pagination]="{ clickable: true }"
+    [scrollbar]="{ draggable: true }">
+    <ng-template swiperSlide *ngFor="let img of Carousel">
+      <div class="slider">
+        <img class="slider-img" alt="experiencia" src={{img}} />
+        <!-- <img alt="experiencia" src="/assets/images/experiencias1.png"  width="150px"/> -->
+      </div>
+    </ng-template>
+  </swiper>
+
+  <div class="section-2">
+    <div class="title">{{Site2.Name}}</div>
+    <div class="text">{{Site2.Description}}</div>
+    <address>{{Site2.Address}}</address>
+  </div>
+</ion-content>

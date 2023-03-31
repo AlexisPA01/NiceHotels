@@ -1,0 +1,67 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar class="toolbar">
+    <ion-button (click)="goBack()" fill="clear" slot="start">
+      <img width="28px" class="toolbar-img" src="/assets/icons/atras.png" alt="hotel">
+    </ion-button>
+    <img *ngIf="Logo!==''" class="toolbar-img" src={{Logo}} alt="hotel">
+    <ion-button [routerLink]="['/login']" fill="clear" slot="end">
+      <img width="28px" class="toolbar-img" src="/assets/icons/user.png" alt="hotel">
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="description">
+    {{Description}}
+  </div>
+  
+  <ion-accordion-group>
+    <ion-accordion value="first">
+      <ion-item slot="header" color="app-color-1">
+        <img  width="32px" class="img" src="/assets/icons/ubicacion.png" alt="">
+        <ion-label>Ubicación</ion-label>
+      </ion-item>
+      <div class="ion-padding" slot="content" class="container">
+        <div class="text">
+          {{Address}}
+        </div>
+        <div id="map-cartagena" class="map"></div>  
+      </div>
+    </ion-accordion>
+    <!-- <ion-accordion value="second">
+      <ion-item slot="header">
+        <img  width="32px" class="img" src="/assets/icons/info.png" alt="">
+        <ion-label>Mapa del hotel</ion-label>
+      </ion-item>
+      <div class="ion-padding" slot="content">
+        Second Content
+      </div>
+    </ion-accordion> -->
+    <ion-accordion value="second">
+      <ion-item slot="header" color="app-color-1">
+        <img  width="32px" class="img" src="/assets/icons/doc.png" alt="">
+        <ion-label>Documentación</ion-label>
+      </ion-item>
+      <div class="ion-padding container" slot="content">
+        <div class="text left">
+          {{Document}}
+        </div>
+
+        <a href={{Link}} target="_blank">
+          Link Documento
+        </a>
+      </div>
+    </ion-accordion>
+    <ion-accordion value="third">
+      <ion-item slot="header" color="app-color-1">
+        <img  width="32px" class="img" src="/assets/icons/tel.png" alt="">
+        <ion-label>Directorio telefónico</ion-label>
+      </ion-item>
+      <div class="ion-padding container" slot="content" *ngFor="let phone of Phones">
+        <div class="text left" >
+          {{phone}}
+        </div>
+      </div>
+    </ion-accordion>
+  </ion-accordion-group>
+</ion-content>

@@ -1,0 +1,7 @@
+{
+  "name": "nicehotels-frontend",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

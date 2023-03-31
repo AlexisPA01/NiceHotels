@@ -1,0 +1,56 @@
+<ion-content class="container">
+  <div class="login">
+    <ion-item lines="none" class="header">
+      <ion-button fill="clear" slot="start" id="btn-login" [routerLink]="['/']"
+        ><ion-icon slot="icon-only" name="chevron-back-outline"></ion-icon
+      ></ion-button>
+      <ion-label class="title">Bienvenid@</ion-label>
+    </ion-item>
+    <form  class="form">
+      <ion-list class="container-form" lines="none">
+        <ion-item class="subtitle">
+          <ion-label> Ingresa para acceder a todas las funciones </ion-label>
+        </ion-item>
+        <ion-item class="item-form">
+          <ion-input
+            class="input-form"
+            name="num document"
+            [(ngModel)]="NumDocument"
+            placeholder="Número identificación"
+          ></ion-input>
+        </ion-item>
+        <ion-item class="item-form">
+          <ion-input
+            class="input-form"
+            name="num room"
+            [(ngModel)]="NumRoom"
+            placeholder="Número habitación"
+          ></ion-input>
+        </ion-item>
+        <ion-item class="item-form">
+          <ion-input
+            class="input-form"
+            name="date BirthDay"
+            placeholder="Fecha nacimiento"
+            type="date"
+            [(ngModel)]="BirthDay"
+          ></ion-input>
+        </ion-item>
+        <ion-item class="item-form">
+          <ion-button (click)="onLogin();presentLoading()"
+            >Inicia Sesión</ion-button
+          >
+        </ion-item>
+      </ion-list>
+    </form>
+  </div>
+  <div class="login-bottom">
+    <img class="login-fondo" src="/assets/images/fondo1.png" alt="fondo" />
+    <img
+      class="login-logo"
+      src="/assets/images/LOGO-emhortel-blanco.png"
+      alt="logo"
+    />
+    <div class="login-link">www.emhotels.com</div>
+  </div>
+</ion-content>

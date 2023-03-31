@@ -1,0 +1,54 @@
+<ion-header>
+  <ion-toolbar class="toolbar">
+    <ion-button [routerLink]="['/']" fill="clear" slot="start">
+      <img
+        width="28px"
+        class="toolbar-img"
+        src="/assets/icons/atras.png"
+        alt="hotel"
+      />
+    </ion-button>
+    <ion-img
+      class="toolbar-img"
+      src="/assets/images/LOGO-emhotel-dorado.png"
+    ></ion-img>
+    <ion-button [routerLink]="['/login']" fill="clear" slot="end">
+      <img
+        width="28px"
+        class="toolbar-img"
+        src="/assets/icons/user.png"
+        alt="hotel"
+      />
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div *ngFor="let hotel of Hotels">
+    <div class="hotel" (click)="goHotel(hotel.Cod)">
+      <div *ngIf="hotel.Medias[0] !== undefined">
+        <img src="{{hotel.Medias[0].URL}}" alt="hotel" />
+        <img class="logo" src="{{hotel.Medias[1].URL}}" alt="logo" />
+      </div>
+      <div *ngIf="hotel.Medias[0] === undefined">
+        <img src="/assets/images/hotels/defaultBanner.jpg" alt="hotel" />
+        <label class="logo-text">{{hotel.Name}}</label>
+      </div>
+    </div>
+  </div>
+
+  <!-- <div class="hotel" [routerLink]="['/hotels/hotel/cartagena']">
+    <img src="/assets/images/hotels/hotel-1-cartagena-plaza1.png" alt="hotel">
+    <img class="logo" src="/assets/images/hotels/logo-cartagena-plaza1.png" alt="logo">
+  </div>
+  <div class="hotel" [routerLink]="['/hotels/hotel/catalonia']">
+    <img src="/assets/images/hotels/hotel-2-catalonia-santodomingo.png" alt="hotel">
+    <img class="logo" src="/assets/images/hotels/logo-catalonia-santodomingo.png" alt="logo">
+  </div>
+  <div class="hotel" [routerLink]="['/hotels/hotel/tamaca']">
+    <img src="/assets/images/hotels/hotel-3-tamaca.png" alt="hotel">
+    <img class="logo" src="/assets/images/hotels/logo-tamaca.png" alt="logo">
+  </div> -->
+
+  <app-tab-component></app-tab-component>
+</ion-content>

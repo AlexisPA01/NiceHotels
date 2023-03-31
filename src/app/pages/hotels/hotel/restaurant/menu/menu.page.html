@@ -1,0 +1,16 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar class="toolbar">
+    <ion-button  (click)="goBack()" fill="clear" slot="start">
+      <img width="28px" class="toolbar-img" src="/assets/icons/atras.png" alt="hotel">
+    </ion-button>
+    <img *ngIf="Logo!==''" class="toolbar-img" src={{Logo}} alt="hotel">
+    <ion-button [routerLink]="['/login']" fill="clear" slot="end">
+      <img width="28px" class="toolbar-img" src="/assets/icons/user.png" alt="hotel">
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+<pdf-viewer [src]="pdfSrc"
+  [render-text]="true"
+  [original-size]="false"
+  style="width: 100%; height: 100%"
+  ></pdf-viewer>

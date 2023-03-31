@@ -1,0 +1,60 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar class="toolbar">
+    <ion-button (click)="goBack()" fill="clear" slot="start">
+      <img
+        width="28px"
+        class="toolbar-img"
+        src="/assets/icons/atras.png"
+        alt="hotel"
+      />
+    </ion-button>
+    <img *ngIf="Logo!==''" class="toolbar-img" src="{{Logo}}" alt="hotel" />
+    <ion-button [routerLink]="['/login']" fill="clear" slot="end">
+      <img
+        width="28px"
+        class="toolbar-img"
+        src="/assets/icons/user.png"
+        alt="hotel"
+      />
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <swiper
+    [slidesPerView]="1"
+    [spaceBetween]="20"
+    [pagination]="{ clickable: true }"
+  >
+    <ng-template swiperSlide *ngFor="let img of Slider">
+      <img alt="experiencia" src="{{img}}" width="100%" />
+    </ng-template>
+  </swiper>
+
+  <div class="cont">
+    <div class="sev-title">{{Room.Name}}</div>
+    <div class="sev-text">{{Room.CostNight}} por noche</div>
+    <div class="sev-description">{{Room.Description}}</div>
+  </div>
+
+  <div class="sev-title">Equipamiento</div>
+
+  <ion-list lines="none">
+    <ion-item
+      *ngFor="let e of Room.RoomEquipments"
+      color="app-color-1"
+      class="container-sev"
+    >
+      <img src="/assets/icons/info.png" alt="icon" width="32px" />
+      <ion-label class="sev-text" text-wrap> {{e.Equipment.Name}} </ion-label>
+    </ion-item>
+  </ion-list>
+  <!-- <div class="container-sev">
+    <img src="/assets/icons/wifi.png" alt="icon" width="32px">
+    <div class="sev-text">
+      Conexión gratuita de banda ancha por Cable y Wifi
+    </div>
+  </div> -->
+
+  <ion-button class="btn"> Reservar </ion-button>
+</ion-content>

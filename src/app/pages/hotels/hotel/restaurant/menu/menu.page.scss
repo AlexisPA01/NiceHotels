@@ -1,0 +1,16 @@
+.toolbar{
+    --background: white;
+    padding: 16px 0 ;
+    text-align: center;
+    padding-bottom: 0;
+    ion-icon{
+        color: var(--app-color-1);
+    }
+
+    &>.toolbar-img{
+        width: 150px;     
+    }
+}
+ion-header{
+    box-shadow: 0 24px 16px 12px;
+}

@@ -1,0 +1,12 @@
+#tab{
+    position: relative;
+    height: 48px;
+    .tab-container{
+        border: none;
+        --background: var(--app-color-2);
+        .tab-button{
+            color: var(--app-color-1)
+        }
+
+    }
+}
