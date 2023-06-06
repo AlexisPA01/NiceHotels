@@ -17,6 +17,6 @@ export class HotelService {
   }
 
   getHotel(Cod: number) {
-    return this.http.get<Hotel>(`${apiUrl}/api/hotel/${Cod}`);
+    return this.http.get<Hotel>(`${apiUrl}/api/hotel/hotel/${Cod}`);
   }
 }

@@ -131,7 +131,7 @@ export class SiteLocationPage implements OnInit {
 
   loader(){
     const loader = new Loader({
-      apiKey: '',
+      apiKey: 'AIzaSyCd7qy6iqGYb6_y5RHdNZF87J7AyMerrTA',
       version: "weekly"
     })
 
